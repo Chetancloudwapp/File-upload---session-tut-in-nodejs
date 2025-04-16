@@ -9,9 +9,15 @@ app.use(session({
     secret: 'secretpassword',
     resave: false,
     saveUninitialized:false,
-    store: MongoStore.create({mongoUrl: 'mongodb://127.0.0.1:27017/sessiondb'}), // agar hum mongodb mai session ko store karane chahte hai to iss parameter ko pass krna compulsory hai here sessiondb is our database name
+    store: MongoStore.create({
+        mongoUrl: 'mongodb://127.0.0.1:27017/sessiondb',
+        collectionName: 'mysessions', // mysession is our custom collection name
+        // ttl :  1000 * 60 * 60 *24, // agar cookie se expiration time set nahi krna chahte hai to ttl method se bhi krskte hai with the help of mongoStore method
+    }), // agar hum mongodb mai session ko store karane chahte hai to iss parameter ko pass krna compulsory hai here sessiondb is our database name
     cookie: { maxAge: 1000 * 60 * 60 *24 }
 }))
+
+// Note:- sessiondb apne aap se hi collection ke name ko bhi create krdega and agar hum humare collection ka custom name dena chahte hai to use MongoStore method ke andar define krskte hai collectionName 
 
 app.get('/', (req, res) => {
     if(req.session.username){
