@@ -1,0 +1,20 @@
+{
+  "name": "file-upload-tutorial",
+  "version": "1.0.0",
+  "description": "File upload Tutorial",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "connect-mongo": "^5.1.0",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-session": "^1.18.1",
+    "multer": "^1.4.5-lts.2",
+    "nodemon": "^3.1.9"
+  }
+}
